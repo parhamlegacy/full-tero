@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tero</title>
+    <link rel="stylesheet" href="header.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- HEADER -->
+
+    <header>
+      <div class="main-header">
+                <a href="test2.html">
+                <img src="logo/tor_logo.png" alt="Logo" class="logo" />
+                </a>
+            <button class="map" onclick="window.location.href='https:www.google.com/maps';">
+              <div class="map-container">
+              <span>نقشه</span>
+              <img src="logo/map.png" alt="" class="icon" />
+              </div>
+            </button>
+            <button class="translate" type="button" onclick="window.location.href='https:/translate.google.com/?sl=fa&tl=en&op=translate';">
+              <div class="translate-container">
+              <span>ترجمه</span>
+              <img src="logo/translate.png" alt="" class="icon" />
+              </div>
+            </button>
+            <button class="location">
+              <div class="location-container">
+              <span>موقعیت</span>
+              <img src="logo/target.png" alt="" class="icon" />
+              </div>
+            </button>
+            <button id="lang-toggle">En</button>
+            <button id="theme-toggle">
+              <img src="logo/sleep-mode.png" alt="" class="icon" />
+            </button>
+          <div class="menu-icon-container">
+            <div id="hamburger" class="hamburger"></div>
+          </div>
+      </div>
+    </header>
+    <div class="menu-container" id="menu-container">
+      <div class="menu">
+        <!-- SEARCH BAR with icon INSIDE the input -->
+        <div class="menu-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search..." />
+        </div>
+        <ul>
+          <!-- Default menu items -->
+          <li class="li-1">شهرها</li>
+          <!-- Quick Access items appear only on small screens -->
+            <div class="quick-access-container">
+            <li class="quick-access-li li-4">ترجمه</li>
+            <li class="quick-access-li li-5">نقشه</li>
+            <li class="quick-access-li li-6">موقعیت</li>
+          </ul>  
+            </div>
+      </div>
+    </div>
+    <script src="header.js"></script>
+  </body>
+</html>
+

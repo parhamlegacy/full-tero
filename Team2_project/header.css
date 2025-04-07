@@ -1,0 +1,502 @@
+/* RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Lalezar", system-ui;
+  transition: background 0.4s, color 0.4s;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+/* HEADER STYLES */
+
+header {
+  top: 0;
+  width: 100%;
+  min-height: 220px;
+  background-color: rgb(26, 107, 212);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 0;
+  animation: header-container-intro 1.7s ease-in-out;
+  position: static;
+  transform: translateY(0);
+  opacity: 1;
+  border-radius: 0 0 50% 50% / 100px 100px 100px 100px;
+
+}
+
+@keyframes header-container-intro {
+  0% {
+    transform: translateY(-60px);
+    opacity: 0;
+    border-radius: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    border-radius: 0 0 50% 50% / 100px 100px 100px 100px;
+  }
+}
+
+.main-header {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 18px;
+  background: rgba(242, 250, 255, 0.9);
+  animation: header-intro 1.7s ease-in-out;
+  width: 98vw;
+  border-radius: 35px;
+  font-size: 1.22rem;
+  user-select: none; /* Prevent text selection */
+  -webkit-user-drag: none; /* Prevent dragging */
+  z-index: 3;
+}
+
+@keyframes header-intro {
+  0% {
+    opacity: 0;
+    width: 48vw;
+    border-radius: 28px;
+  }
+  100% {
+    opacity: 1;
+    width: 98vw;
+    border-radius: 35px;
+  }
+}
+
+/* Header groups */
+
+.logo{
+  height: 33px;
+}
+
+.icon{
+  height: 24px;
+  width: 24px;
+}
+
+
+/* hover for animated underline */
+
+.map-container,
+.translate-container,
+.location-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s ease;
+  direction: rtl;
+  text-wrap: nowrap;
+  gap: 2px;
+}
+
+.quick-access img {
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.map-container::after {
+  content: "";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 80px;
+  width: 65px;
+
+  height: 2px;
+  transition: 0.2s;
+  transform: scaleX(0);
+}
+
+.translate-container::after {
+  content: "";
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 80px;
+  width: 82px;
+  border-radius: 5px;
+  height: 2px;
+  transition: 0.2s;
+  transform: scaleX(0);
+}
+
+.translate-container:hover:after,
+.map-container:hover:after {
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scaleX(1);
+}
+
+.quick-access button::after {
+  content: "";
+  position: absolute;
+  top: 80px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2px;
+  display: block;
+  background-color: #222;
+  transition: 0.2s;
+  transform: scaleX(0);
+}
+
+.quick-access button:nth-child(3)::after {
+  content: "";
+  position: absolute;
+  top: 80px;
+  width: 87px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2px;
+  display: block;
+  background-color: #222;
+  transition: 0.2s;
+  transform: scaleX(0);
+}
+
+.quick-access button:hover:after {
+  background-color: #222;
+  transform: scaleX(1);
+}
+/* language change */
+.lang-toggle button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* THEME TOGGLE using icon (circular button) */
+.theme-toggle img {
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+/* HAMBURGER (MENU ICON) in Right Group */
+
+.menu-icon-container {
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 26px; /* Height to accommodate the hamburger and its pseudo-elements */
+  cursor: pointer;
+  z-index: 4;
+}
+
+.hamburger {
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background-color: #333;
+  transition: transform 0.4s ease;
+  z-index: 3;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background-color: #333;
+  transition: transform 0.4s ease, top 0.4s ease, opacity 0.4s ease;
+}
+
+.hamburger::before {
+  top: -10px;
+}
+.hamburger::after {
+  top: 10px;
+}
+
+.hamburger.active {
+  transform: rotate(45deg);
+}
+.hamburger.active::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+.hamburger.active::after {
+  top: 0;
+  opacity: 0;
+}
+
+/* MENU OVERLAY & SLIDING PANEL */
+.menu-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+  transition: background-color 0.4s ease;
+  z-index: 2;
+}
+
+.menu-container.active {
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: all;
+}
+
+/* Bigger Menu Panel */
+.menu {
+  width: 350px;
+  background: white;
+  padding: 80px 40px 40px 40px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.4s ease, width 0.4s ease;
+}
+.menu ul li,
+.menu-search {
+  margin-top: 40px;
+  user-select: none; /* Prevent text selection */
+  -webkit-user-drag: none; /* Prevent dragging */
+}
+
+.menu-container.active .menu {
+  transform: translateX(0);
+}
+
+/* SEARCH BAR WITH ICON INSIDE THE INPUT */
+.menu-search {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 8px 0px;
+}
+
+.menu-search input {
+  width: 100%;
+  padding: 10px 15px 10px 40px; /* extra left padding for icon */
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.menu-search input:focus {
+  outline: none;
+  border-color: #0077ff;
+}
+
+.menu-search .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  /* Black in light mode, white in dark mode */
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .menu-search .search-icon {
+  color: #fff;
+}
+
+body.dark-mode .menu-search input {
+  background: #444;
+  color: #eee;
+  border-color: #555;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu ul li {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.menu ul li ,
+.quick-access-li {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background: #efeff6;
+  border-radius: 10px;
+  color: #333;
+  padding: 20px;
+  transition: transform 0.2s, background-color 0.3s, color 0.3s;
+}
+
+.menu ul li:hover,
+.quick-access-li:hover {
+  transform: scale(1.05);
+  background-color: #0077ff;
+  color: #fff;
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu ul li,
+.quick-access-li {
+  transition: all 0.3s ease-in-out; /* Smooth transition back to normal */
+}
+
+/* Default animation delays for the default li's */
+.menu-container.active .li-1 {
+  animation: ali 1s ease 0s forwards;
+}
+
+/* Quick Access items animation delays */
+.menu-container.active .li-4 {
+  animation: ali 1s ease 0.2s forwards;
+}
+.menu-container.active .li-5 {
+  animation: ali 1s ease 0.4s forwards;
+}
+.menu-container.active .li-6 {
+  animation: ali 1s ease 0.6s forwards;
+}
+
+.quick-access-container {
+  display: none;
+}
+
+@keyframes ali {
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 769px) {
+  header {
+    min-height: 120px;
+    border-radius: 0 0 40% 40% / 70px 70px 70px 70px;
+  }
+  .main-header {
+    width: 95%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: space-between;
+    font-size: 1.3rem;
+  }
+  .quick-access-container {
+    display: block;
+  }
+  .map-container,
+  .translate-container,
+  .location-container {
+    display: none;
+  }
+  /* Ensure the quick access items inside the menu are displayed */
+  .quick-access-li {
+    display: block;
+  }
+  .menu {
+    width: 300px;
+    padding: 70px 30px;
+  }
+  .menu ul li  {
+    padding: 18px;
+  }
+}
+@media (min-width: 480px) {
+  header {
+    height: 150px;
+
+  }
+  .logo-container img {
+    height: 30px;
+  }
+  .menu {
+    width: 250px;
+    padding: 60px 20px;
+  }
+  .menu ul li a {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+}
+
+/* DARK MODE STYLES */
+body.dark-mode {
+  background: #333;
+  color: #eee;
+}
+
+body.dark-mode .main-header {
+  background: #444;
+  border-color: #555;
+}
+
+body.dark-mode .logo-container a {
+  color: #eee;
+}
+
+body.dark-mode .menu {
+  background: #222;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.7);
+}
+/* for change menu icon white in dark mode */
+body.dark-mode .hamburger,
+body.dark-mode .hamburger::after,
+body.dark-mode .hamburger::before {
+  background-color: white;
+}
+
+body.dark-mode .menu ul li a {
+  background: #333;
+  color: #eee;
+}
+
+body.dark-mode .theme-toggle button {
+  background: #666;
+  color: #eee;
+}
+/* filter for dark mode image color "white"  */
+body.dark-mode .logo-container img,
+body.dark-mode .map-container img,
+body.dark-mode .translate-container img,
+body.dark-mode .theme-toggle img {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(136deg)
+    brightness(106%) contrast(104%);
+}
+/* for underline color change in dark mode */
+body.dark-mode .quick-access button:hover:after,
+body.dark-mode .map-container:hover:after,
+body.dark-mode .translate-container:hover:after {
+  background-color: #ffffff;
+  transform: scaleX(1);
+}
